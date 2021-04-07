@@ -22,31 +22,35 @@ import org.scalatest.flatspec.AnyFlatSpec
 class PersonTest extends AnyFlatSpec {
 
 //cases for checking whether PersonOne name length and age is <,> then PersonTwo
-  "person" should "return True as age of PersonOne < PersonTwo " in{
+  "person" should "return True if name are same and age of PersonOne < PersonTwo " in{
     val personOne = new Person("Test", 24)
     val personTwo = new Person("Test",25)
-    val result = personOne < personTwo
-    assert(result)
+    assert(personOne < personTwo)
   }
 
-  "person" should "return False as age of PersonOne > PersonTwo " in{
+  it should "return False if name are same and age of PersonOne > PersonTwo " in{
     val personOne = new Person("Test", 25)
     val personTwo = new Person("Test",24)
-    val result = personOne > personTwo
-    assert(result)
+    assert(personOne > personTwo)
   }
 
-  "person" should "return True as Length of name of PersonOne < PersonTwo " in{
+  it should "return True as Length of name of PersonOne < PersonTwo " in{
     val personOne = new Person("Test", 24)
     val personTwo = new Person("TestAgain",24)
-    val result = personOne < personTwo
-    assert(result)
+    assert(personOne < personTwo)
   }
 
-  "person" should "return False as Length of name of PersonOne > PersonTwo " in{
+  it should "return False as Length of name of PersonOne > PersonTwo " in{
     val personOne = new Person("TestAgain", 25)
     val personTwo = new Person("Test",25)
-    val result = personOne > personTwo
-    assert(result)
+    assert(personOne > personTwo)
   }
+
+  it should "return valid for same name and same age PersonOne = PersonTwo " in{
+    val personOne = new Person("Test", 25)
+    val personTwo = new Person("Test",25)
+    assert(personOne.compare(personTwo) == 0)
+    }
+
+
 }

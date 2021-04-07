@@ -16,13 +16,27 @@
 package com.knoldus
 
 //Implementation of Person class that extends Ordered trait
-class Person(val name: String, val age: Int)  extends Ordered[Person]{
-  def compare(that: Person): Int = {
-    if(this.name.equals(that.name)){    //comparing name if name are equal then
-      this.age - that.age               //subtracting that.age from this.age to get a boolean return
+class Person(val name: String, val age: Int) extends Ordered[Person] {
+    override def compare(that: Person): Int = {
+      if(this.name.equals(that.name)) {
+        if(this.age < that.age) {
+          -1
+        }
+        else if(this.age > that.age) {
+          1
+        }
+        else {
+          0
+        }
+      }
+      else {
+        if(this.name.length < that.name.length) {
+          -1
+        }
+        else {
+          1
+        }
+      }
     }
-    else {
-      this.name.length - that.name.length
-    }
-  }
 }
+
